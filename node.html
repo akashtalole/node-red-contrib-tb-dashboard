@@ -1,0 +1,1236 @@
+<script type="text/javascript">
+    RED.nodes.registerType('tb-dashboard-controller', {
+        category: 'function',
+        color: '#89bf04',
+        defaults: {
+            method: { value: "", required: true },
+            getCustomerDashboardsUsingGET_customerId: { value: "" },
+            getCustomerDashboardsUsingGET_customerIdType: { value: "str" },
+            getCustomerDashboardsUsingGET_pageSize: { value: "" },
+            getCustomerDashboardsUsingGET_pageSizeType: { value: "str" },
+            getCustomerDashboardsUsingGET_page: { value: "" },
+            getCustomerDashboardsUsingGET_pageType: { value: "str" },
+            getCustomerDashboardsUsingGET_mobile: { value: "" },
+            getCustomerDashboardsUsingGET_mobileType: { value: "str" },
+            getCustomerDashboardsUsingGET_textSearch: { value: "" },
+            getCustomerDashboardsUsingGET_textSearchType: { value: "str" },
+            getCustomerDashboardsUsingGET_sortProperty: { value: "" },
+            getCustomerDashboardsUsingGET_sortPropertyType: { value: "str" },
+            getCustomerDashboardsUsingGET_sortOrder: { value: "" },
+            getCustomerDashboardsUsingGET_sortOrderType: { value: "str" },
+            saveDashboardUsingPOST_body: { value: "" },
+            saveDashboardUsingPOST_bodyType: { value: "str" },
+            getDashboardInfoByIdUsingGET_dashboardId: { value: "" },
+            getDashboardInfoByIdUsingGET_dashboardIdType: { value: "str" },
+            getDashboardByIdUsingGET_dashboardId: { value: "" },
+            getDashboardByIdUsingGET_dashboardIdType: { value: "str" },
+            deleteDashboardUsingDELETE_dashboardId: { value: "" },
+            deleteDashboardUsingDELETE_dashboardIdType: { value: "str" },
+            updateDashboardCustomersUsingPOST_dashboardId: { value: "" },
+            updateDashboardCustomersUsingPOST_dashboardIdType: { value: "str" },
+            updateDashboardCustomersUsingPOST_body: { value: "" },
+            updateDashboardCustomersUsingPOST_bodyType: { value: "str" },
+            addDashboardCustomersUsingPOST_dashboardId: { value: "" },
+            addDashboardCustomersUsingPOST_dashboardIdType: { value: "str" },
+            addDashboardCustomersUsingPOST_body: { value: "" },
+            addDashboardCustomersUsingPOST_bodyType: { value: "str" },
+            removeDashboardCustomersUsingPOST_dashboardId: { value: "" },
+            removeDashboardCustomersUsingPOST_dashboardIdType: { value: "str" },
+            removeDashboardCustomersUsingPOST_body: { value: "" },
+            removeDashboardCustomersUsingPOST_bodyType: { value: "str" },
+            assignDashboardToEdgeUsingPOST_edgeId: { value: "" },
+            assignDashboardToEdgeUsingPOST_edgeIdType: { value: "str" },
+            assignDashboardToEdgeUsingPOST_dashboardId: { value: "" },
+            assignDashboardToEdgeUsingPOST_dashboardIdType: { value: "str" },
+            unassignDashboardFromEdgeUsingDELETE_edgeId: { value: "" },
+            unassignDashboardFromEdgeUsingDELETE_edgeIdType: { value: "str" },
+            unassignDashboardFromEdgeUsingDELETE_dashboardId: { value: "" },
+            unassignDashboardFromEdgeUsingDELETE_dashboardIdType: { value: "str" },
+            getEdgeDashboardsUsingGET_edgeId: { value: "" },
+            getEdgeDashboardsUsingGET_edgeIdType: { value: "str" },
+            getEdgeDashboardsUsingGET_pageSize: { value: "" },
+            getEdgeDashboardsUsingGET_pageSizeType: { value: "str" },
+            getEdgeDashboardsUsingGET_page: { value: "" },
+            getEdgeDashboardsUsingGET_pageType: { value: "str" },
+            getEdgeDashboardsUsingGET_textSearch: { value: "" },
+            getEdgeDashboardsUsingGET_textSearchType: { value: "str" },
+            getEdgeDashboardsUsingGET_sortProperty: { value: "" },
+            getEdgeDashboardsUsingGET_sortPropertyType: { value: "str" },
+            getEdgeDashboardsUsingGET_sortOrder: { value: "" },
+            getEdgeDashboardsUsingGET_sortOrderType: { value: "str" },
+            setTenantHomeDashboardInfoUsingPOST_body: { value: "" },
+            setTenantHomeDashboardInfoUsingPOST_bodyType: { value: "str" },
+            getTenantDashboardsUsingGET_pageSize: { value: "" },
+            getTenantDashboardsUsingGET_pageSizeType: { value: "str" },
+            getTenantDashboardsUsingGET_page: { value: "" },
+            getTenantDashboardsUsingGET_pageType: { value: "str" },
+            getTenantDashboardsUsingGET_mobile: { value: "" },
+            getTenantDashboardsUsingGET_mobileType: { value: "str" },
+            getTenantDashboardsUsingGET_textSearch: { value: "" },
+            getTenantDashboardsUsingGET_textSearchType: { value: "str" },
+            getTenantDashboardsUsingGET_sortProperty: { value: "" },
+            getTenantDashboardsUsingGET_sortPropertyType: { value: "str" },
+            getTenantDashboardsUsingGET_sortOrder: { value: "" },
+            getTenantDashboardsUsingGET_sortOrderType: { value: "str" },
+            getTenantDashboardsUsingGET_1_tenantId: { value: "" },
+            getTenantDashboardsUsingGET_1_tenantIdType: { value: "str" },
+            getTenantDashboardsUsingGET_1_pageSize: { value: "" },
+            getTenantDashboardsUsingGET_1_pageSizeType: { value: "str" },
+            getTenantDashboardsUsingGET_1_page: { value: "" },
+            getTenantDashboardsUsingGET_1_pageType: { value: "str" },
+            getTenantDashboardsUsingGET_1_textSearch: { value: "" },
+            getTenantDashboardsUsingGET_1_textSearchType: { value: "str" },
+            getTenantDashboardsUsingGET_1_sortProperty: { value: "" },
+            getTenantDashboardsUsingGET_1_sortPropertyType: { value: "str" },
+            getTenantDashboardsUsingGET_1_sortOrder: { value: "" },
+            getTenantDashboardsUsingGET_1_sortOrderType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'icon.png',
+        label: function () {
+            return this.name || this.method || "tb-dashboard-controller";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-getCustomerDashboardsUsingGET_customerId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getCustomerDashboardsUsingGET_customerIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getCustomerDashboardsUsingGET_customerId").hide();
+
+                $("#node-input-getCustomerDashboardsUsingGET_pageSize").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getCustomerDashboardsUsingGET_pageSizeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getCustomerDashboardsUsingGET_pageSize").hide();
+
+                $("#node-input-getCustomerDashboardsUsingGET_page").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getCustomerDashboardsUsingGET_pageType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getCustomerDashboardsUsingGET_page").hide();
+
+                $("#node-input-getCustomerDashboardsUsingGET_mobile").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getCustomerDashboardsUsingGET_mobileType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getCustomerDashboardsUsingGET_mobile").hide();
+
+                $("#node-input-getCustomerDashboardsUsingGET_textSearch").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getCustomerDashboardsUsingGET_textSearchType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getCustomerDashboardsUsingGET_textSearch").hide();
+
+
+                $("#getCustomerDashboardsUsingGET_sortProperty").hide();
+
+
+                $("#getCustomerDashboardsUsingGET_sortOrder").hide();
+
+                $("#node-input-saveDashboardUsingPOST_body").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-saveDashboardUsingPOST_bodyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#saveDashboardUsingPOST_body").hide();
+
+                $("#node-input-getDashboardInfoByIdUsingGET_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDashboardInfoByIdUsingGET_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDashboardInfoByIdUsingGET_dashboardId").hide();
+
+                $("#node-input-getDashboardByIdUsingGET_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDashboardByIdUsingGET_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDashboardByIdUsingGET_dashboardId").hide();
+
+                $("#node-input-deleteDashboardUsingDELETE_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteDashboardUsingDELETE_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteDashboardUsingDELETE_dashboardId").hide();
+
+                $("#node-input-updateDashboardCustomersUsingPOST_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateDashboardCustomersUsingPOST_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateDashboardCustomersUsingPOST_dashboardId").hide();
+
+                $("#node-input-updateDashboardCustomersUsingPOST_body").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateDashboardCustomersUsingPOST_bodyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateDashboardCustomersUsingPOST_body").hide();
+
+                $("#node-input-addDashboardCustomersUsingPOST_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-addDashboardCustomersUsingPOST_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#addDashboardCustomersUsingPOST_dashboardId").hide();
+
+                $("#node-input-addDashboardCustomersUsingPOST_body").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-addDashboardCustomersUsingPOST_bodyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#addDashboardCustomersUsingPOST_body").hide();
+
+                $("#node-input-removeDashboardCustomersUsingPOST_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-removeDashboardCustomersUsingPOST_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#removeDashboardCustomersUsingPOST_dashboardId").hide();
+
+                $("#node-input-removeDashboardCustomersUsingPOST_body").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-removeDashboardCustomersUsingPOST_bodyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#removeDashboardCustomersUsingPOST_body").hide();
+
+                $("#node-input-assignDashboardToEdgeUsingPOST_edgeId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-assignDashboardToEdgeUsingPOST_edgeIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#assignDashboardToEdgeUsingPOST_edgeId").hide();
+
+                $("#node-input-assignDashboardToEdgeUsingPOST_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-assignDashboardToEdgeUsingPOST_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#assignDashboardToEdgeUsingPOST_dashboardId").hide();
+
+                $("#node-input-unassignDashboardFromEdgeUsingDELETE_edgeId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-unassignDashboardFromEdgeUsingDELETE_edgeIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#unassignDashboardFromEdgeUsingDELETE_edgeId").hide();
+
+                $("#node-input-unassignDashboardFromEdgeUsingDELETE_dashboardId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-unassignDashboardFromEdgeUsingDELETE_dashboardIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#unassignDashboardFromEdgeUsingDELETE_dashboardId").hide();
+
+                $("#node-input-getEdgeDashboardsUsingGET_edgeId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getEdgeDashboardsUsingGET_edgeIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getEdgeDashboardsUsingGET_edgeId").hide();
+
+                $("#node-input-getEdgeDashboardsUsingGET_pageSize").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getEdgeDashboardsUsingGET_pageSizeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getEdgeDashboardsUsingGET_pageSize").hide();
+
+                $("#node-input-getEdgeDashboardsUsingGET_page").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getEdgeDashboardsUsingGET_pageType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getEdgeDashboardsUsingGET_page").hide();
+
+                $("#node-input-getEdgeDashboardsUsingGET_textSearch").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getEdgeDashboardsUsingGET_textSearchType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getEdgeDashboardsUsingGET_textSearch").hide();
+
+
+                $("#getEdgeDashboardsUsingGET_sortProperty").hide();
+
+
+                $("#getEdgeDashboardsUsingGET_sortOrder").hide();
+
+                $("#node-input-setTenantHomeDashboardInfoUsingPOST_body").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-setTenantHomeDashboardInfoUsingPOST_bodyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#setTenantHomeDashboardInfoUsingPOST_body").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_pageSize").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_pageSizeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_pageSize").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_page").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_pageType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_page").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_mobile").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_mobileType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_mobile").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_textSearch").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_textSearchType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_textSearch").hide();
+
+
+                $("#getTenantDashboardsUsingGET_sortProperty").hide();
+
+
+                $("#getTenantDashboardsUsingGET_sortOrder").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_1_tenantId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_1_tenantIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_1_tenantId").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_1_pageSize").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_1_pageSizeType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_1_pageSize").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_1_page").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_1_pageType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_1_page").hide();
+
+                $("#node-input-getTenantDashboardsUsingGET_1_textSearch").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getTenantDashboardsUsingGET_1_textSearchType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getTenantDashboardsUsingGET_1_textSearch").hide();
+
+
+                $("#getTenantDashboardsUsingGET_1_sortProperty").hide();
+
+
+                $("#getTenantDashboardsUsingGET_1_sortOrder").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'getCustomerDashboardsUsingGET') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'saveDashboardUsingPOST') {
+
+                }
+                if ($("#node-input-method").val() === 'getHomeDashboardUsingGET') {
+
+                }
+                if ($("#node-input-method").val() === 'getHomeDashboardInfoUsingGET') {
+
+                }
+                if ($("#node-input-method").val() === 'getDashboardInfoByIdUsingGET') {
+
+                }
+                if ($("#node-input-method").val() === 'getMaxDatapointsLimitUsingGET') {
+
+                }
+                if ($("#node-input-method").val() === 'getServerTimeUsingGET') {
+
+                }
+                if ($("#node-input-method").val() === 'getDashboardByIdUsingGET') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteDashboardUsingDELETE') {
+
+                }
+                if ($("#node-input-method").val() === 'updateDashboardCustomersUsingPOST') {
+
+                }
+                if ($("#node-input-method").val() === 'addDashboardCustomersUsingPOST') {
+
+                }
+                if ($("#node-input-method").val() === 'removeDashboardCustomersUsingPOST') {
+
+                }
+                if ($("#node-input-method").val() === 'assignDashboardToEdgeUsingPOST') {
+
+                }
+                if ($("#node-input-method").val() === 'unassignDashboardFromEdgeUsingDELETE') {
+
+                }
+                if ($("#node-input-method").val() === 'getEdgeDashboardsUsingGET') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'getTenantHomeDashboardInfoUsingGET') {
+
+                }
+                if ($("#node-input-method").val() === 'setTenantHomeDashboardInfoUsingPOST') {
+
+                }
+                if ($("#node-input-method").val() === 'getTenantDashboardsUsingGET') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'getTenantDashboardsUsingGET_1') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'getCustomerDashboardsUsingGET') {
+
+                        $("#getCustomerDashboardsUsingGET_customerId").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_pageSize").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_page").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_mobile").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_textSearch").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_sortProperty").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_sortOrder").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'saveDashboardUsingPOST') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getHomeDashboardUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getHomeDashboardInfoUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getDashboardInfoByIdUsingGET') {
+
+                        $("#getDashboardInfoByIdUsingGET_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getMaxDatapointsLimitUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getServerTimeUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getDashboardByIdUsingGET') {
+
+                        $("#getDashboardByIdUsingGET_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteDashboardUsingDELETE') {
+
+                        $("#deleteDashboardUsingDELETE_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateDashboardCustomersUsingPOST') {
+
+                        $("#updateDashboardCustomersUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'addDashboardCustomersUsingPOST') {
+
+                        $("#addDashboardCustomersUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'removeDashboardCustomersUsingPOST') {
+
+                        $("#removeDashboardCustomersUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'assignDashboardToEdgeUsingPOST') {
+
+                        $("#assignDashboardToEdgeUsingPOST_edgeId").show();
+                        
+                        $("#assignDashboardToEdgeUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'unassignDashboardFromEdgeUsingDELETE') {
+
+                        $("#unassignDashboardFromEdgeUsingDELETE_edgeId").show();
+                        
+                        $("#unassignDashboardFromEdgeUsingDELETE_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getEdgeDashboardsUsingGET') {
+
+                        $("#getEdgeDashboardsUsingGET_edgeId").show();
+                        
+                        $("#getEdgeDashboardsUsingGET_pageSize").show();
+                        
+                        $("#getEdgeDashboardsUsingGET_page").show();
+                        
+                        $("#getEdgeDashboardsUsingGET_textSearch").show();
+                        
+                        $("#getEdgeDashboardsUsingGET_sortProperty").show();
+                        
+                        $("#getEdgeDashboardsUsingGET_sortOrder").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getTenantHomeDashboardInfoUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'setTenantHomeDashboardInfoUsingPOST') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getTenantDashboardsUsingGET') {
+
+                        $("#getTenantDashboardsUsingGET_pageSize").show();
+                        
+                        $("#getTenantDashboardsUsingGET_page").show();
+                        
+                        $("#getTenantDashboardsUsingGET_mobile").show();
+                        
+                        $("#getTenantDashboardsUsingGET_textSearch").show();
+                        
+                        $("#getTenantDashboardsUsingGET_sortProperty").show();
+                        
+                        $("#getTenantDashboardsUsingGET_sortOrder").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getTenantDashboardsUsingGET_1') {
+
+                        $("#getTenantDashboardsUsingGET_1_tenantId").show();
+                        
+                        $("#getTenantDashboardsUsingGET_1_pageSize").show();
+                        
+                        $("#getTenantDashboardsUsingGET_1_page").show();
+                        
+                        $("#getTenantDashboardsUsingGET_1_textSearch").show();
+                        
+                        $("#getTenantDashboardsUsingGET_1_sortProperty").show();
+                        
+                        $("#getTenantDashboardsUsingGET_1_sortOrder").show();
+                        
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'getCustomerDashboardsUsingGET') {
+
+                        $("#getCustomerDashboardsUsingGET_customerId").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_pageSize").show();
+                        
+                        $("#getCustomerDashboardsUsingGET_page").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'saveDashboardUsingPOST') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getHomeDashboardUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getHomeDashboardInfoUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getDashboardInfoByIdUsingGET') {
+
+                        $("#getDashboardInfoByIdUsingGET_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getMaxDatapointsLimitUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getServerTimeUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getDashboardByIdUsingGET') {
+
+                        $("#getDashboardByIdUsingGET_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteDashboardUsingDELETE') {
+
+                        $("#deleteDashboardUsingDELETE_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateDashboardCustomersUsingPOST') {
+
+                        $("#updateDashboardCustomersUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'addDashboardCustomersUsingPOST') {
+
+                        $("#addDashboardCustomersUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'removeDashboardCustomersUsingPOST') {
+
+                        $("#removeDashboardCustomersUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'assignDashboardToEdgeUsingPOST') {
+
+                        $("#assignDashboardToEdgeUsingPOST_edgeId").show();
+                        
+                        $("#assignDashboardToEdgeUsingPOST_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'unassignDashboardFromEdgeUsingDELETE') {
+
+                        $("#unassignDashboardFromEdgeUsingDELETE_edgeId").show();
+                        
+                        $("#unassignDashboardFromEdgeUsingDELETE_dashboardId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getEdgeDashboardsUsingGET') {
+
+                        $("#getEdgeDashboardsUsingGET_edgeId").show();
+                        
+                        $("#getEdgeDashboardsUsingGET_pageSize").show();
+                        
+                        $("#getEdgeDashboardsUsingGET_page").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getTenantHomeDashboardInfoUsingGET') {
+
+                    }
+                    if ($("#node-input-method").val() === 'setTenantHomeDashboardInfoUsingPOST') {
+
+                    }
+                    if ($("#node-input-method").val() === 'getTenantDashboardsUsingGET') {
+
+                        $("#getTenantDashboardsUsingGET_pageSize").show();
+                        
+                        $("#getTenantDashboardsUsingGET_page").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getTenantDashboardsUsingGET_1') {
+
+                        $("#getTenantDashboardsUsingGET_1_tenantId").show();
+                        
+                        $("#getTenantDashboardsUsingGET_1_pageSize").show();
+                        
+                        $("#getTenantDashboardsUsingGET_1_page").show();
+                        
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+            var selected_getCustomerDashboardsUsingGET_sortProperty = $('#node-input-getCustomerDashboardsUsingGET_sortProperty option:selected');
+            if (!selected_getCustomerDashboardsUsingGET_sortProperty.val()) {
+                var children_getCustomerDashboardsUsingGET_sortProperty = $('#node-input-getCustomerDashboardsUsingGET_sortProperty').children();
+                var first_getCustomerDashboardsUsingGET_sortProperty = children_getCustomerDashboardsUsingGET_sortProperty.first();
+                $('#node-input-getCustomerDashboardsUsingGET_sortProperty').val(first_getCustomerDashboardsUsingGET_sortProperty.val());
+            }
+            var selected_getCustomerDashboardsUsingGET_sortOrder = $('#node-input-getCustomerDashboardsUsingGET_sortOrder option:selected');
+            if (!selected_getCustomerDashboardsUsingGET_sortOrder.val()) {
+                var children_getCustomerDashboardsUsingGET_sortOrder = $('#node-input-getCustomerDashboardsUsingGET_sortOrder').children();
+                var first_getCustomerDashboardsUsingGET_sortOrder = children_getCustomerDashboardsUsingGET_sortOrder.first();
+                $('#node-input-getCustomerDashboardsUsingGET_sortOrder').val(first_getCustomerDashboardsUsingGET_sortOrder.val());
+            }
+            var selected_getEdgeDashboardsUsingGET_sortProperty = $('#node-input-getEdgeDashboardsUsingGET_sortProperty option:selected');
+            if (!selected_getEdgeDashboardsUsingGET_sortProperty.val()) {
+                var children_getEdgeDashboardsUsingGET_sortProperty = $('#node-input-getEdgeDashboardsUsingGET_sortProperty').children();
+                var first_getEdgeDashboardsUsingGET_sortProperty = children_getEdgeDashboardsUsingGET_sortProperty.first();
+                $('#node-input-getEdgeDashboardsUsingGET_sortProperty').val(first_getEdgeDashboardsUsingGET_sortProperty.val());
+            }
+            var selected_getEdgeDashboardsUsingGET_sortOrder = $('#node-input-getEdgeDashboardsUsingGET_sortOrder option:selected');
+            if (!selected_getEdgeDashboardsUsingGET_sortOrder.val()) {
+                var children_getEdgeDashboardsUsingGET_sortOrder = $('#node-input-getEdgeDashboardsUsingGET_sortOrder').children();
+                var first_getEdgeDashboardsUsingGET_sortOrder = children_getEdgeDashboardsUsingGET_sortOrder.first();
+                $('#node-input-getEdgeDashboardsUsingGET_sortOrder').val(first_getEdgeDashboardsUsingGET_sortOrder.val());
+            }
+            var selected_getTenantDashboardsUsingGET_sortProperty = $('#node-input-getTenantDashboardsUsingGET_sortProperty option:selected');
+            if (!selected_getTenantDashboardsUsingGET_sortProperty.val()) {
+                var children_getTenantDashboardsUsingGET_sortProperty = $('#node-input-getTenantDashboardsUsingGET_sortProperty').children();
+                var first_getTenantDashboardsUsingGET_sortProperty = children_getTenantDashboardsUsingGET_sortProperty.first();
+                $('#node-input-getTenantDashboardsUsingGET_sortProperty').val(first_getTenantDashboardsUsingGET_sortProperty.val());
+            }
+            var selected_getTenantDashboardsUsingGET_sortOrder = $('#node-input-getTenantDashboardsUsingGET_sortOrder option:selected');
+            if (!selected_getTenantDashboardsUsingGET_sortOrder.val()) {
+                var children_getTenantDashboardsUsingGET_sortOrder = $('#node-input-getTenantDashboardsUsingGET_sortOrder').children();
+                var first_getTenantDashboardsUsingGET_sortOrder = children_getTenantDashboardsUsingGET_sortOrder.first();
+                $('#node-input-getTenantDashboardsUsingGET_sortOrder').val(first_getTenantDashboardsUsingGET_sortOrder.val());
+            }
+            var selected_getTenantDashboardsUsingGET_1_sortProperty = $('#node-input-getTenantDashboardsUsingGET_1_sortProperty option:selected');
+            if (!selected_getTenantDashboardsUsingGET_1_sortProperty.val()) {
+                var children_getTenantDashboardsUsingGET_1_sortProperty = $('#node-input-getTenantDashboardsUsingGET_1_sortProperty').children();
+                var first_getTenantDashboardsUsingGET_1_sortProperty = children_getTenantDashboardsUsingGET_1_sortProperty.first();
+                $('#node-input-getTenantDashboardsUsingGET_1_sortProperty').val(first_getTenantDashboardsUsingGET_1_sortProperty.val());
+            }
+            var selected_getTenantDashboardsUsingGET_1_sortOrder = $('#node-input-getTenantDashboardsUsingGET_1_sortOrder option:selected');
+            if (!selected_getTenantDashboardsUsingGET_1_sortOrder.val()) {
+                var children_getTenantDashboardsUsingGET_1_sortOrder = $('#node-input-getTenantDashboardsUsingGET_1_sortOrder').children();
+                var first_getTenantDashboardsUsingGET_1_sortOrder = children_getTenantDashboardsUsingGET_1_sortOrder.first();
+                $('#node-input-getTenantDashboardsUsingGET_1_sortOrder').val(first_getTenantDashboardsUsingGET_1_sortOrder.val());
+            }
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="tb-dashboard-controller">
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="TbDashboardController.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="getCustomerDashboardsUsingGET" data-i18n="TbDashboardController.parameters.getCustomerDashboardsUsingGET"></option>
+            <option value="saveDashboardUsingPOST" data-i18n="TbDashboardController.parameters.saveDashboardUsingPOST"></option>
+            <option value="getHomeDashboardUsingGET" data-i18n="TbDashboardController.parameters.getHomeDashboardUsingGET"></option>
+            <option value="getHomeDashboardInfoUsingGET" data-i18n="TbDashboardController.parameters.getHomeDashboardInfoUsingGET"></option>
+            <option value="getDashboardInfoByIdUsingGET" data-i18n="TbDashboardController.parameters.getDashboardInfoByIdUsingGET"></option>
+            <option value="getMaxDatapointsLimitUsingGET" data-i18n="TbDashboardController.parameters.getMaxDatapointsLimitUsingGET"></option>
+            <option value="getServerTimeUsingGET" data-i18n="TbDashboardController.parameters.getServerTimeUsingGET"></option>
+            <option value="getDashboardByIdUsingGET" data-i18n="TbDashboardController.parameters.getDashboardByIdUsingGET"></option>
+            <option value="deleteDashboardUsingDELETE" data-i18n="TbDashboardController.parameters.deleteDashboardUsingDELETE"></option>
+            <option value="updateDashboardCustomersUsingPOST" data-i18n="TbDashboardController.parameters.updateDashboardCustomersUsingPOST"></option>
+            <option value="addDashboardCustomersUsingPOST" data-i18n="TbDashboardController.parameters.addDashboardCustomersUsingPOST"></option>
+            <option value="removeDashboardCustomersUsingPOST" data-i18n="TbDashboardController.parameters.removeDashboardCustomersUsingPOST"></option>
+            <option value="assignDashboardToEdgeUsingPOST" data-i18n="TbDashboardController.parameters.assignDashboardToEdgeUsingPOST"></option>
+            <option value="unassignDashboardFromEdgeUsingDELETE" data-i18n="TbDashboardController.parameters.unassignDashboardFromEdgeUsingDELETE"></option>
+            <option value="getEdgeDashboardsUsingGET" data-i18n="TbDashboardController.parameters.getEdgeDashboardsUsingGET"></option>
+            <option value="getTenantHomeDashboardInfoUsingGET" data-i18n="TbDashboardController.parameters.getTenantHomeDashboardInfoUsingGET"></option>
+            <option value="setTenantHomeDashboardInfoUsingPOST" data-i18n="TbDashboardController.parameters.setTenantHomeDashboardInfoUsingPOST"></option>
+            <option value="getTenantDashboardsUsingGET" data-i18n="TbDashboardController.parameters.getTenantDashboardsUsingGET"></option>
+            <option value="getTenantDashboardsUsingGET_1" data-i18n="TbDashboardController.parameters.getTenantDashboardsUsingGET_1"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="TbDashboardController.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="getCustomerDashboardsUsingGET_customerId">
+        <label for="node-input-getCustomerDashboardsUsingGET_customerId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.customerId"></span></label>
+
+        <input type="text" id="node-input-getCustomerDashboardsUsingGET_customerId" placeholder="A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-getCustomerDashboardsUsingGET_customerIdType">
+    </div>
+
+    <div class="form-row" id="getCustomerDashboardsUsingGET_pageSize">
+        <label for="node-input-getCustomerDashboardsUsingGET_pageSize"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.pageSize"></span></label>
+
+        <input type="text" id="node-input-getCustomerDashboardsUsingGET_pageSize" placeholder="Maximum amount of entities in a one page" style="width:70%">
+        <input type="hidden" id="node-input-getCustomerDashboardsUsingGET_pageSizeType">
+    </div>
+
+    <div class="form-row" id="getCustomerDashboardsUsingGET_page">
+        <label for="node-input-getCustomerDashboardsUsingGET_page"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.page"></span></label>
+
+        <input type="text" id="node-input-getCustomerDashboardsUsingGET_page" placeholder="Sequence number of page starting from 0" style="width:70%">
+        <input type="hidden" id="node-input-getCustomerDashboardsUsingGET_pageType">
+    </div>
+
+    <div class="form-row" id="getCustomerDashboardsUsingGET_mobile">
+        <label for="node-input-getCustomerDashboardsUsingGET_mobile"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.mobile"></span></label>
+
+        <input type="text" id="node-input-getCustomerDashboardsUsingGET_mobile" placeholder="Exclude dashboards that are hidden for mobile" style="width:70%">
+        <input type="hidden" id="node-input-getCustomerDashboardsUsingGET_mobileType">
+    </div>
+
+    <div class="form-row" id="getCustomerDashboardsUsingGET_textSearch">
+        <label for="node-input-getCustomerDashboardsUsingGET_textSearch"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.textSearch"></span></label>
+
+        <input type="text" id="node-input-getCustomerDashboardsUsingGET_textSearch" placeholder="The case insensitive 'substring' filter based on the dashboard title." style="width:70%">
+        <input type="hidden" id="node-input-getCustomerDashboardsUsingGET_textSearchType">
+    </div>
+
+    <div class="form-row" id="getCustomerDashboardsUsingGET_sortProperty">
+        <label for="node-input-getCustomerDashboardsUsingGET_sortProperty"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortProperty"></span></label>
+        <select id="node-input-getCustomerDashboardsUsingGET_sortProperty">
+            <option value="createdTime">createdTime</option>
+            <option value="title">title</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getCustomerDashboardsUsingGET_sortOrder">
+        <label for="node-input-getCustomerDashboardsUsingGET_sortOrder"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortOrder"></span></label>
+        <select id="node-input-getCustomerDashboardsUsingGET_sortOrder">
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="saveDashboardUsingPOST_body">
+        <label for="node-input-saveDashboardUsingPOST_body"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.body"></span></label>
+
+        <input type="text" id="node-input-saveDashboardUsingPOST_body" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-saveDashboardUsingPOST_bodyType">
+    </div>
+
+    <div class="form-row" id="getDashboardInfoByIdUsingGET_dashboardId">
+        <label for="node-input-getDashboardInfoByIdUsingGET_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-getDashboardInfoByIdUsingGET_dashboardId" placeholder="A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-getDashboardInfoByIdUsingGET_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="getDashboardByIdUsingGET_dashboardId">
+        <label for="node-input-getDashboardByIdUsingGET_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-getDashboardByIdUsingGET_dashboardId" placeholder="A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-getDashboardByIdUsingGET_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="deleteDashboardUsingDELETE_dashboardId">
+        <label for="node-input-deleteDashboardUsingDELETE_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-deleteDashboardUsingDELETE_dashboardId" placeholder="A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-deleteDashboardUsingDELETE_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="updateDashboardCustomersUsingPOST_dashboardId">
+        <label for="node-input-updateDashboardCustomersUsingPOST_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-updateDashboardCustomersUsingPOST_dashboardId" placeholder="A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-updateDashboardCustomersUsingPOST_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="updateDashboardCustomersUsingPOST_body">
+        <label for="node-input-updateDashboardCustomersUsingPOST_body"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.body"></span></label>
+
+        <input type="text" id="node-input-updateDashboardCustomersUsingPOST_body" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-updateDashboardCustomersUsingPOST_bodyType">
+    </div>
+
+    <div class="form-row" id="addDashboardCustomersUsingPOST_dashboardId">
+        <label for="node-input-addDashboardCustomersUsingPOST_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-addDashboardCustomersUsingPOST_dashboardId" placeholder="A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-addDashboardCustomersUsingPOST_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="addDashboardCustomersUsingPOST_body">
+        <label for="node-input-addDashboardCustomersUsingPOST_body"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.body"></span></label>
+
+        <input type="text" id="node-input-addDashboardCustomersUsingPOST_body" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-addDashboardCustomersUsingPOST_bodyType">
+    </div>
+
+    <div class="form-row" id="removeDashboardCustomersUsingPOST_dashboardId">
+        <label for="node-input-removeDashboardCustomersUsingPOST_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-removeDashboardCustomersUsingPOST_dashboardId" placeholder="A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-removeDashboardCustomersUsingPOST_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="removeDashboardCustomersUsingPOST_body">
+        <label for="node-input-removeDashboardCustomersUsingPOST_body"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.body"></span></label>
+
+        <input type="text" id="node-input-removeDashboardCustomersUsingPOST_body" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-removeDashboardCustomersUsingPOST_bodyType">
+    </div>
+
+    <div class="form-row" id="assignDashboardToEdgeUsingPOST_edgeId">
+        <label for="node-input-assignDashboardToEdgeUsingPOST_edgeId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.edgeId"></span></label>
+
+        <input type="text" id="node-input-assignDashboardToEdgeUsingPOST_edgeId" placeholder="edgeId" style="width:70%">
+        <input type="hidden" id="node-input-assignDashboardToEdgeUsingPOST_edgeIdType">
+    </div>
+
+    <div class="form-row" id="assignDashboardToEdgeUsingPOST_dashboardId">
+        <label for="node-input-assignDashboardToEdgeUsingPOST_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-assignDashboardToEdgeUsingPOST_dashboardId" placeholder="dashboardId" style="width:70%">
+        <input type="hidden" id="node-input-assignDashboardToEdgeUsingPOST_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="unassignDashboardFromEdgeUsingDELETE_edgeId">
+        <label for="node-input-unassignDashboardFromEdgeUsingDELETE_edgeId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.edgeId"></span></label>
+
+        <input type="text" id="node-input-unassignDashboardFromEdgeUsingDELETE_edgeId" placeholder="edgeId" style="width:70%">
+        <input type="hidden" id="node-input-unassignDashboardFromEdgeUsingDELETE_edgeIdType">
+    </div>
+
+    <div class="form-row" id="unassignDashboardFromEdgeUsingDELETE_dashboardId">
+        <label for="node-input-unassignDashboardFromEdgeUsingDELETE_dashboardId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.dashboardId"></span></label>
+
+        <input type="text" id="node-input-unassignDashboardFromEdgeUsingDELETE_dashboardId" placeholder="dashboardId" style="width:70%">
+        <input type="hidden" id="node-input-unassignDashboardFromEdgeUsingDELETE_dashboardIdType">
+    </div>
+
+    <div class="form-row" id="getEdgeDashboardsUsingGET_edgeId">
+        <label for="node-input-getEdgeDashboardsUsingGET_edgeId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.edgeId"></span></label>
+
+        <input type="text" id="node-input-getEdgeDashboardsUsingGET_edgeId" placeholder="A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-getEdgeDashboardsUsingGET_edgeIdType">
+    </div>
+
+    <div class="form-row" id="getEdgeDashboardsUsingGET_pageSize">
+        <label for="node-input-getEdgeDashboardsUsingGET_pageSize"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.pageSize"></span></label>
+
+        <input type="text" id="node-input-getEdgeDashboardsUsingGET_pageSize" placeholder="Maximum amount of entities in a one page" style="width:70%">
+        <input type="hidden" id="node-input-getEdgeDashboardsUsingGET_pageSizeType">
+    </div>
+
+    <div class="form-row" id="getEdgeDashboardsUsingGET_page">
+        <label for="node-input-getEdgeDashboardsUsingGET_page"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.page"></span></label>
+
+        <input type="text" id="node-input-getEdgeDashboardsUsingGET_page" placeholder="Sequence number of page starting from 0" style="width:70%">
+        <input type="hidden" id="node-input-getEdgeDashboardsUsingGET_pageType">
+    </div>
+
+    <div class="form-row" id="getEdgeDashboardsUsingGET_textSearch">
+        <label for="node-input-getEdgeDashboardsUsingGET_textSearch"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.textSearch"></span></label>
+
+        <input type="text" id="node-input-getEdgeDashboardsUsingGET_textSearch" placeholder="The case insensitive 'substring' filter based on the dashboard title." style="width:70%">
+        <input type="hidden" id="node-input-getEdgeDashboardsUsingGET_textSearchType">
+    </div>
+
+    <div class="form-row" id="getEdgeDashboardsUsingGET_sortProperty">
+        <label for="node-input-getEdgeDashboardsUsingGET_sortProperty"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortProperty"></span></label>
+        <select id="node-input-getEdgeDashboardsUsingGET_sortProperty">
+            <option value="createdTime">createdTime</option>
+            <option value="title">title</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getEdgeDashboardsUsingGET_sortOrder">
+        <label for="node-input-getEdgeDashboardsUsingGET_sortOrder"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortOrder"></span></label>
+        <select id="node-input-getEdgeDashboardsUsingGET_sortOrder">
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="setTenantHomeDashboardInfoUsingPOST_body">
+        <label for="node-input-setTenantHomeDashboardInfoUsingPOST_body"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.body"></span></label>
+
+        <input type="text" id="node-input-setTenantHomeDashboardInfoUsingPOST_body" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-setTenantHomeDashboardInfoUsingPOST_bodyType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_pageSize">
+        <label for="node-input-getTenantDashboardsUsingGET_pageSize"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.pageSize"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_pageSize" placeholder="Maximum amount of entities in a one page" style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_pageSizeType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_page">
+        <label for="node-input-getTenantDashboardsUsingGET_page"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.page"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_page" placeholder="Sequence number of page starting from 0" style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_pageType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_mobile">
+        <label for="node-input-getTenantDashboardsUsingGET_mobile"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.mobile"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_mobile" placeholder="Exclude dashboards that are hidden for mobile" style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_mobileType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_textSearch">
+        <label for="node-input-getTenantDashboardsUsingGET_textSearch"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.textSearch"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_textSearch" placeholder="The case insensitive 'substring' filter based on the dashboard title." style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_textSearchType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_sortProperty">
+        <label for="node-input-getTenantDashboardsUsingGET_sortProperty"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortProperty"></span></label>
+        <select id="node-input-getTenantDashboardsUsingGET_sortProperty">
+            <option value="createdTime">createdTime</option>
+            <option value="title">title</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_sortOrder">
+        <label for="node-input-getTenantDashboardsUsingGET_sortOrder"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortOrder"></span></label>
+        <select id="node-input-getTenantDashboardsUsingGET_sortOrder">
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_1_tenantId">
+        <label for="node-input-getTenantDashboardsUsingGET_1_tenantId"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.tenantId"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_1_tenantId" placeholder="A string value representing the tenant id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'" style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_1_tenantIdType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_1_pageSize">
+        <label for="node-input-getTenantDashboardsUsingGET_1_pageSize"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.pageSize"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_1_pageSize" placeholder="Maximum amount of entities in a one page" style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_1_pageSizeType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_1_page">
+        <label for="node-input-getTenantDashboardsUsingGET_1_page"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.page"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_1_page" placeholder="Sequence number of page starting from 0" style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_1_pageType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_1_textSearch">
+        <label for="node-input-getTenantDashboardsUsingGET_1_textSearch"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.textSearch"></span></label>
+
+        <input type="text" id="node-input-getTenantDashboardsUsingGET_1_textSearch" placeholder="The case insensitive 'substring' filter based on the dashboard title." style="width:70%">
+        <input type="hidden" id="node-input-getTenantDashboardsUsingGET_1_textSearchType">
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_1_sortProperty">
+        <label for="node-input-getTenantDashboardsUsingGET_1_sortProperty"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortProperty"></span></label>
+        <select id="node-input-getTenantDashboardsUsingGET_1_sortProperty">
+            <option value="createdTime">createdTime</option>
+            <option value="title">title</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getTenantDashboardsUsingGET_1_sortOrder">
+        <label for="node-input-getTenantDashboardsUsingGET_1_sortOrder"><i class="fa fa-list"></i> <span data-i18n="TbDashboardController.parameters.sortOrder"></span></label>
+        <select id="node-input-getTenantDashboardsUsingGET_1_sortOrder">
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="tb-dashboard-controller">
+
+    <p> ThingsBoard open-source IoT platform REST API documentation.</p>
+    <p><b>Methods</b></p>
+        <h3>GET /api/customer/{customerId}/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}</h3>
+        <p>Returns a page of dashboard info objects owned by the specified customer. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See the 'Model' tab of the Response Class for more details. 
+
+Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.</p>
+        <dl class="message-properties">
+        <dt>customerId <span class="property-type">string</span></dt>
+        <dt>pageSize <span class="property-type">integer</span></dt>
+        <dt>page <span class="property-type">integer</span></dt>
+        <dt>mobile <span class="property-type">boolean</span></dt>
+        <dt>textSearch <span class="property-type">string</span></dt>
+        <dt>sortProperty <span class="property-type">string</span></dt>
+        <dt>sortOrder <span class="property-type">string</span></dt>
+        </dl>
+        <h3>POST /api/dashboard</h3>
+        <p>Create or update the Dashboard. When creating dashboard, platform generates Dashboard Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Dashboard id will be present in the response. Specify existing Dashboard id to update the dashboard. Referencing non-existing dashboard Id will cause 'Not Found' error. 
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>body <span class="property-type"></span></dt>
+        </dl>
+        <h3>GET /api/dashboard/home</h3>
+        <p>Returns the home dashboard object that is configured as 'homeDashboardId' parameter in the 'additionalInfo' of the User. If 'homeDashboardId' parameter is not set on the User level and the User has authority 'CUSTOMER_USER', check the same parameter for the corresponding Customer. If 'homeDashboardId' parameter is not set on the User and Customer levels then checks the same parameter for the Tenant that owns the user. The Dashboard object is a heavyweight object that contains information about the dashboard (e.g. title, image, assigned customers) and also configuration JSON (e.g. layouts, widgets, entity aliases).
+
+Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /api/dashboard/home/info</h3>
+        <p>Returns the home dashboard info object that is configured as 'homeDashboardId' parameter in the 'additionalInfo' of the User. If 'homeDashboardId' parameter is not set on the User level and the User has authority 'CUSTOMER_USER', check the same parameter for the corresponding Customer. If 'homeDashboardId' parameter is not set on the User and Customer levels then checks the same parameter for the Tenant that owns the user. 
+
+Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /api/dashboard/info/{dashboardId}</h3>
+        <p>Get the information about the dashboard based on 'dashboardId' parameter. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON.</p>
+        <dl class="message-properties">
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /api/dashboard/maxDatapointsLimit</h3>
+        <p>Get the maximum number of data points that dashboard may request from the server per in a single subscription command. This value impacts the time window behavior. It impacts 'Max values' parameter in case user selects 'None' as 'Data aggregation function'. It also impacts the 'Grouping interval' in case of any other 'Data aggregation function' is selected. The actual value of the limit is configurable in the system configuration file.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /api/dashboard/serverTime</h3>
+        <p>Get the server time (milliseconds since January 1, 1970 UTC). Used to adjust view of the dashboards according to the difference between browser and server time.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>GET /api/dashboard/{dashboardId}</h3>
+        <p>Get the dashboard based on 'dashboardId' parameter. The Dashboard object is a heavyweight object that contains information about the dashboard (e.g. title, image, assigned customers) and also configuration JSON (e.g. layouts, widgets, entity aliases).
+
+Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.</p>
+        <dl class="message-properties">
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /api/dashboard/{dashboardId}</h3>
+        <p>Delete the Dashboard.
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        </dl>
+        <h3>POST /api/dashboard/{dashboardId}/customers</h3>
+        <p>Updates the list of Customers that this Dashboard is assigned to. Removes previous assignments to customers that are not in the provided list. Returns the Dashboard object. 
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        <dt>body <span class="property-type"></span></dt>
+        </dl>
+        <h3>POST /api/dashboard/{dashboardId}/customers/add</h3>
+        <p>Adds the list of Customers to the existing list of assignments for the Dashboard. Keeps previous assignments to customers that are not in the provided list. Returns the Dashboard object.
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        <dt>body <span class="property-type"></span></dt>
+        </dl>
+        <h3>POST /api/dashboard/{dashboardId}/customers/remove</h3>
+        <p>Removes the list of Customers from the existing list of assignments for the Dashboard. Keeps other assignments to customers that are not in the provided list. Returns the Dashboard object.
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        <dt>body <span class="property-type"></span></dt>
+        </dl>
+        <h3>POST /api/edge/{edgeId}/dashboard/{dashboardId}</h3>
+        <p>Creates assignment of an existing dashboard to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment dashboard (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once dashboard will be delivered to edge service, it's going to be available for usage on remote edge instance.
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>edgeId <span class="property-type">string</span></dt>
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        </dl>
+        <h3>DELETE /api/edge/{edgeId}/dashboard/{dashboardId}</h3>
+        <p>Clears assignment of the dashboard to the edge. Unassignment works in async way - first, 'unassign' notification event pushed to edge queue on platform. Second, remote edge service will receive an 'unassign' command to remove dashboard (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once 'unassign' command will be delivered to edge service, it's going to remove dashboard locally.
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>edgeId <span class="property-type">string</span></dt>
+        <dt>dashboardId <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /api/edge/{edgeId}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}</h3>
+        <p>Returns a page of dashboard info objects assigned to the specified edge. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See the 'Model' tab of the Response Class for more details. 
+
+Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.</p>
+        <dl class="message-properties">
+        <dt>edgeId <span class="property-type">string</span></dt>
+        <dt>pageSize <span class="property-type">integer</span></dt>
+        <dt>page <span class="property-type">integer</span></dt>
+        <dt>textSearch <span class="property-type">string</span></dt>
+        <dt>sortProperty <span class="property-type">string</span></dt>
+        <dt>sortOrder <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /api/tenant/dashboard/home/info</h3>
+        <p>Returns the home dashboard info object that is configured as 'homeDashboardId' parameter in the 'additionalInfo' of the corresponding tenant. 
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        </dl>
+        <h3>POST /api/tenant/dashboard/home/info</h3>
+        <p>Update the home dashboard assignment for the current tenant. 
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>body <span class="property-type"></span></dt>
+        </dl>
+        <h3>GET /api/tenant/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}</h3>
+        <p>Returns a page of dashboard info objects owned by the tenant of a current user. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See the 'Model' tab of the Response Class for more details. 
+
+Available for users with 'TENANT_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>pageSize <span class="property-type">integer</span></dt>
+        <dt>page <span class="property-type">integer</span></dt>
+        <dt>mobile <span class="property-type">boolean</span></dt>
+        <dt>textSearch <span class="property-type">string</span></dt>
+        <dt>sortProperty <span class="property-type">string</span></dt>
+        <dt>sortOrder <span class="property-type">string</span></dt>
+        </dl>
+        <h3>GET /api/tenant/{tenantId}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}</h3>
+        <p>Returns a page of dashboard info objects owned by tenant. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See the 'Model' tab of the Response Class for more details. 
+
+Available for users with 'SYS_ADMIN' authority.</p>
+        <dl class="message-properties">
+        <dt>tenantId <span class="property-type">string</span></dt>
+        <dt>pageSize <span class="property-type">integer</span></dt>
+        <dt>page <span class="property-type">integer</span></dt>
+        <dt>textSearch <span class="property-type">string</span></dt>
+        <dt>sortProperty <span class="property-type">string</span></dt>
+        <dt>sortOrder <span class="property-type">string</span></dt>
+        </dl>
+</script>

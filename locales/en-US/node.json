@@ -1,0 +1,48 @@
+{
+    "TbDashboardController": {
+        "label": {
+            "service": "Service",
+            "method": "Method",
+            "host": "Host",
+            "header": "Header",
+            "value": "Value",
+            "isQuery": "isQuery"
+        },
+        "status": {
+            "requesting": "requesting"
+        },
+        "parameters": {
+            "getCustomerDashboardsUsingGET": "GET /api/customer/{customerId}/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}",
+            "customerId": "customerId",
+            "pageSize": "pageSize",
+            "page": "page",
+            "mobile": "mobile",
+            "textSearch": "textSearch",
+            "sortProperty": "sortProperty",
+            "sortOrder": "sortOrder",
+            "saveDashboardUsingPOST": "POST /api/dashboard",
+            "body": "body",
+            "getHomeDashboardUsingGET": "GET /api/dashboard/home",
+            "getHomeDashboardInfoUsingGET": "GET /api/dashboard/home/info",
+            "getDashboardInfoByIdUsingGET": "GET /api/dashboard/info/{dashboardId}",
+            "dashboardId": "dashboardId",
+            "getMaxDatapointsLimitUsingGET": "GET /api/dashboard/maxDatapointsLimit",
+            "getServerTimeUsingGET": "GET /api/dashboard/serverTime",
+            "getDashboardByIdUsingGET": "GET /api/dashboard/{dashboardId}",
+            "deleteDashboardUsingDELETE": "DELETE /api/dashboard/{dashboardId}",
+            "updateDashboardCustomersUsingPOST": "POST /api/dashboard/{dashboardId}/customers",
+            "addDashboardCustomersUsingPOST": "POST /api/dashboard/{dashboardId}/customers/add",
+            "removeDashboardCustomersUsingPOST": "POST /api/dashboard/{dashboardId}/customers/remove",
+            "assignDashboardToEdgeUsingPOST": "POST /api/edge/{edgeId}/dashboard/{dashboardId}",
+            "edgeId": "edgeId",
+            "unassignDashboardFromEdgeUsingDELETE": "DELETE /api/edge/{edgeId}/dashboard/{dashboardId}",
+            "getEdgeDashboardsUsingGET": "GET /api/edge/{edgeId}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}",
+            "getTenantHomeDashboardInfoUsingGET": "GET /api/tenant/dashboard/home/info",
+            "setTenantHomeDashboardInfoUsingPOST": "POST /api/tenant/dashboard/home/info",
+            "getTenantDashboardsUsingGET": "GET /api/tenant/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}",
+            "getTenantDashboardsUsingGET_1": "GET /api/tenant/{tenantId}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}",
+            "tenantId": "tenantId",
+            "optionalParameters": "Options"
+        }
+    }
+}
